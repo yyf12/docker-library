@@ -1,3 +1,4 @@
+#coding=utf-8
 """kube2pyconsul.
 
 Usage:
