@@ -95,10 +95,12 @@ def pods_monitor(queue):
 
 def registration(queue):
     while True:
-        context, event = queue.get(block=False)
+        context, event = queue.get(block=True)
         
         if context == 'pod':
-            iplist = os.popen("ifconfig |grep broadcast|grep -Ev ' 192| 172| 127'|awk '{print $2}'|xargs").read().strip().split(' ')
+	    '''ifconfig 取得结果是物理机的ip，ip r取得docker化的ip，因为docker化之后ifconfig格式变了 '''
+            #iplist = os.popen("ifconfig |grep broadcast|grep -Ev ' 192| 172| 127'|awk '{print $2}'|xargs").read().strip().split(' ')
+	    iplist = os.popen("ip r|awk '{print $5}'|grep -Ev '192|172|eth'|xargs").read().strip().split(' ')
             if event['object']['spec']['nodeName'] in iplist:
                 portlist = []
                 for c in event['object']['spec']['containers']:
