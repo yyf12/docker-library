@@ -95,7 +95,7 @@ def pods_monitor(queue):
 
 def registration(queue):
     while True:
-        context, event = queue.get(block=True)
+        context, event = queue.get(block=False)
         
         if context == 'pod':
             iplist = os.popen("ifconfig |grep broadcast|grep -Ev ' 192| 172| 127'|awk '{print $2}'|xargs").read().strip().split(' ')
