@@ -171,8 +171,10 @@ def run():
     consul_desk = Process(target=registration, args=(q,), name='kube2pyconsul/registration')
     
     pods_watch.start()
+    pods_watch.join()
+	
     consul_desk.start()
-    
+    consul_desk.join()
     try:
         while True:
             time.sleep(10)
