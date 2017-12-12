@@ -1,4 +1,4 @@
-FROM docker.emarbox.com/sys/centos:7.4.1708
+FROM foxchan/centos:7.4.1708
 
 MAINTAINER Foxchan
 

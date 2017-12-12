@@ -8,8 +8,6 @@ set -e
 
 
 
-#mkdir -p ${DATA_DIR}/{tmp,log,etc,var}
-
 
 if [[ -e /scripts/firstrun ]]; then
         # config mysqldb
@@ -22,5 +20,4 @@ else
         fi
 fi
 
-#mysqld_safe --defaults-file=/data/mysql/etc/my.cnf
 exec "$@"
