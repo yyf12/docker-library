@@ -1,5 +1,5 @@
-FROM docker.emarbox.com/sys/centos:7.4.1708
-#base mysql-5.7.18
+FROM foxchann/centos:7.4.1708
+
 MAINTAINER Foxchan
 
 RUN yum -y install libaio libaio-devel net-tools
