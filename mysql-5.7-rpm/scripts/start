@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+
+#
+# When Startup Container script
+#
+
+
+
+#mkdir -p ${DATA_DIR}/{tmp,log,etc,var}
+
+
+if [[ -e /scripts/firstrun ]]; then
+        # config mysqldb
+        /scripts/firstrun_mysql
+        rm /scripts/firstrun
+else
+        # Cleanup previous mysqldb sockets
+        if [[ -e ${DATA_DIR}/mysql.sock ]]; then
+                rm -f ${DATA_DIR}/mysql.sock
+        fi
+fi
+
+#mysqld_safe --defaults-file=/data/mysql/etc/my.cnf
+exec "$@"
