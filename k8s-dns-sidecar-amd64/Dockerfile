@@ -1,2 +1,2 @@
-From gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.7
+From gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.8
 MAINTAINER FoxChan
